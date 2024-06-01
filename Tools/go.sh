@@ -1,0 +1,1 @@
+pdfunite ../Wood Badge 2020 Final (2023 Update)/WB 2020 Daily Session Folders for CDs/WB 2020 1 DAY ONE/1-03 Course Overview/D1_03_01_PN_Session Summary_080120.PDF ./WB1-69-24_ParticipantGuide.pdf temp.pdf
