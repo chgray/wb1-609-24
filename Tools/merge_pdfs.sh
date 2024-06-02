@@ -60,7 +60,7 @@ function merge_pdf {
 # Start
 rm ./*.pdf
 rm ./*.md
-cp ../Participant_Notebook_Loose/PDFs/FirstPage_Binder_Owner.pdf Day1-WB1-69-24_ParticipantGuide.pdf
+#cp ../Participant_Notebook_Loose/PDFs/FirstPage_Binder_Owner.pdf Day1-WB1-69-24_ParticipantGuide.pdf
 
 #
 #  Build up a header for the section
@@ -79,6 +79,8 @@ do
     echo "Missing File - stopping: $input_file"
     
     echo "# $day" > $header_name
+    echo  >> $header_name
+    echo "![](./FullSailLogo.png){width=50%}" >> $header_name
     echo  >> $header_name
     echo "**WB1-609-24 -- DRAFT**"  >> $header_name
     echo  >> $header_name
@@ -120,12 +122,14 @@ do
     exit 1
   fi
   
-  echo "Header : $header_name"
-  echo "Dest : $dest_file"
+  if [ ! -f "$dest_file" ]; then  
+    echo "Header : $header_name"
+    echo "Dest : $dest_file"
+    
+    make_header_myDir=$(pwd)
+    podman run --rm -v "$make_header_myDir:/data" docker.io/chgray123/pandoc-arm:extra $header_name -o $dest_file -V geometry:margin=0.5in
+  fi
   
-  make_header_myDir=$(pwd)
-  podman run --rm -v "$make_header_myDir:/data" docker.io/chgray123/pandoc-arm:extra $header_name -o $dest_file.pdf 
-  exit
 done
 
 

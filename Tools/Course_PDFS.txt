@@ -1,3 +1,4 @@
+Day0;../Participant_Notebook_Loose/PDFs/FirstPage_Binder_Owner.pdf
 Day1;../Wood Badge 2020 Final (2023 Update)/WB 2020 Daily Session Folders for CDs/WB 2020 1 DAY ONE/1-03 Course Overview/D1_03_01_PN_Session Summary_080120.PDF
 Day1;../Wood Badge 2020 Final (2023 Update)/WB 2020 Daily Session Folders for CDs/WB 2020 1 DAY ONE/1-04 Drive Vision, Mission, and Values/D1_04_01_PN_Session Summary_080120.PDF
 Day1;../Wood Badge 2020 Final (2023 Update)/WB 2020 Daily Session Folders for CDs/WB 2020 1 DAY ONE/1-05 Know Thyself/D1_05_03_PN_Session Summary_080120.PDF
