@@ -14,12 +14,32 @@ function make_header {
     exit 1
   fi
   
-  echo "# $make_header_day" > ./header.md
+  
+  echo "![](./FullSailLogo.png){width=20%}" > ./header.md
+  echo "" >> ./header.md
+  echo "" >> ./header.md
+
+  echo "## Single Document Change Form ($make_header_me:$make_header_day)" >> ./header.md
+  echo "" >> ./header.md
+
+  echo "## Purpose : this page is for hand written notes in Course Prep" >> ./header.md
+  echo "" >> ./header.md
+  echo "* it will not be included in the final course material" >> ./header.md
+  echo "* it's intended as a way for Staff to track and organize necessary changes, during SD1/SD2/etc" >> ./header.md
+  echo "* this page contains the original files/location of the printed content;  to make discovery/tracking easier" >> ./header.md
+
+  echo "" >> ./header.md
+  echo "" >> ./header.md
+
+  echo "## Process to make a changes in the followingg sections" >> ./header.md
+  echo "" >> ./header.md
+  echo "" >> ./header.md
+  echo "1. Using a pen/pencil, on this page, describe the change you need" >> ./header.md
+  echo "1. Remove this page, and the page that needs changes, from your notebook" >> ./header.md
+  echo "1. Staple them together" >> ./header.md
+  echo "1. Give to Scribe (Travis or Chris)" >> ./header.md    
   echo  >> ./header.md
-  echo "**WB1-609-24 -- DRAFT**"  >> ./header.md
-  echo  >> ./header.md
-  echo "------------" >> ./header.md
-  echo  >> ./header.md
+
   echo "**Original File: **" >> ./header.md
   echo "$make_header_me" >> ./header.md
   echo  >> ./header.md
@@ -28,7 +48,7 @@ function make_header {
   echo >> ./header.md
     
   make_header_myDir=$(pwd)
-  podman run --rm -v "$make_header_myDir:/data" docker.io/chgray123/pandoc-arm:extra ./header.md -o ./Header.pdf
+  podman run --rm -v "$make_header_myDir:/data" docker.io/chgray123/pandoc-arm:extra ./header.md -o ./Header.pdf -V geometry:margin=0.5in
   
   rm ./header.md
 }
@@ -78,12 +98,31 @@ do
   if [ ! -f "$header_name" ]; then
     echo "Missing File - stopping: $input_file"
     
-    echo "# $day" > $header_name
+    echo "![](./FullSailLogo.png){width=20%}" > $header_name
+    echo "" >> $header_name
+      
+    echo "# **WB1-609-24 Scribe Notes** ($day) Summary" >> $header_name
+    echo "" >> $header_name
+    
+    echo "## Document Purpose:" >> $header_name
+    echo "" >> $header_nam
+    echo "* for Staff to make changes in the following document content" >> $header_name
+    echo "* this particular page, will not be included in the final course material" >> $header_name
+    echo "* this page is only intended as a way for Staff to track and organize necessary changes, during SD1/SD2/etc" >> $header_name
+    echo "* this page contains the original files/location of the printed content;  to make discovery/tracking easier" >> $header_name
+    
+    echo "" >> $header_name
+    echo "" >> $header_name
+
+    echo "## Process to make a changes in the followingg sections" >> $header_name
+    echo "" >> $header_name
+    echo "1. Using a pen/pencil, on this page, describe the change you need" >> $header_name
+    echo "1. Remove this page, and the page that needs changes, from your notebook" >> $header_name
+    echo "1. Staple them together" >> $header_name
+    echo "1. Give to Scribe (Travis or Chris)" >> $header_name    
     echo  >> $header_name
-    echo "![](./FullSailLogo.png){width=50%}" >> $header_name
     echo  >> $header_name
-    echo "**WB1-609-24 -- DRAFT**"  >> $header_name
-    echo  >> $header_name
+    
     echo "------------" >> $header_name
     echo  >> $header_name
     echo "**Original File: **"  >> $header_name
@@ -104,7 +143,6 @@ do
   echo $input_file
   echo "----"
 done
-
 
 #
 # Start each file with just the header
