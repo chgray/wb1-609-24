@@ -22,7 +22,7 @@ function make_header {
   echo "## Single Document Change Form ($make_header_me:$make_header_day)" >> ./header.md
   echo "" >> ./header.md
 
-  echo "## Purpose : this page is for hand written notes in Course Prep" >> ./header.md
+  echo "## Purpose : this page is for Staff and Guides to provide changes to Scribe" >> ./header.md
   echo "" >> ./header.md
   echo "* it will not be included in the final course material" >> ./header.md
   echo "* it's intended as a way for Staff to track and organize necessary changes, during SD1/SD2/etc" >> ./header.md
@@ -31,7 +31,15 @@ function make_header {
   echo "" >> ./header.md
   echo "" >> ./header.md
 
-  echo "## Process to make a changes in the followingg sections" >> ./header.md
+  echo "## Process to make a changes in the following sections" >> ./header.md
+  
+  echo "" >> ./header.md
+  echo "### 1. Digital (Preferred) : Scan this on your Phone and fill out the form!" >> ./header.md
+  echo "" >> ./header.md
+  echo "![](./FeedbackFormChangeRequest.png){width=20%}" >> ./header.md
+  echo "" >> ./header.md
+  echo "### 2. Paper" >> ./header.md
+  
   echo "" >> ./header.md
   echo "" >> ./header.md
   echo "1. Using a pen/pencil, on this page, describe the change you need" >> ./header.md
@@ -49,7 +57,8 @@ function make_header {
     
   make_header_myDir=$(pwd)
   podman run --rm -v "$make_header_myDir:/data" docker.io/chgray123/pandoc-arm:extra ./header.md -o ./Header.pdf -V geometry:margin=0.5in
-  
+  merge_pdf ../Participant_Notebook_Loose/WB1_609-24_Specific/Day0_Prep/PDFs/BlankNotePage.pdf ./Header.pdf
+    
   rm ./header.md
 }
 
@@ -62,6 +71,13 @@ function merge_pdf {
     echo "Missing File - stopping: $merge_pdf_input_file"
     exit 1
   fi
+  
+  if [ ! -f "$merge_pdf_dest_file" ]; then
+    echo "Output doesnt exist, copying"
+    cp $merge_pdf_input_file $merge_pdf_dest_file
+    return 0
+  fi
+  
   
   echo "Adding $merge_pdf_input_file to $merge_pdf_dest_file"
 
@@ -114,7 +130,17 @@ do
     echo "" >> $header_name
     echo "" >> $header_name
 
-    echo "## Process to make a changes in the followingg sections" >> $header_name
+    echo "------------" >> $header_name
+    echo "" >> $header_name
+    echo "## Process to make a changes in the following sections" >> $header_name
+    
+    echo "" >> $header_name
+    echo "### 1. Digital change submission (Preferred) : Scan this on your Phone and fill out the form!" >> $header_name
+    echo "" >> $header_name
+    echo "![](./FeedbackFormChangeRequest.png){width=20%}" >> $header_name
+    echo "" >> $header_name
+    echo "### 2. Paper" >> $header_name
+    
     echo "" >> $header_name
     echo "1. Using a pen/pencil, on this page, describe the change you need" >> $header_name
     echo "1. Remove this page, and the page that needs changes, from your notebook" >> $header_name
@@ -125,8 +151,9 @@ do
     
     echo "------------" >> $header_name
     echo  >> $header_name
-    echo "**Original File: **"  >> $header_name
+    echo "## Order of files:" >> $header_name
     echo  >> $header_name
+    echo "This '$day' the ORIGINAL content from National is in contained, by this section, in the following order" >> $header_name
     echo   >> $header_name
     echo " | Section | File | " >> $header_name
     echo  " | --| -- | " >> $header_name
@@ -166,6 +193,7 @@ do
     
     make_header_myDir=$(pwd)
     podman run --rm -v "$make_header_myDir:/data" docker.io/chgray123/pandoc-arm:extra $header_name -o $dest_file -V geometry:margin=0.5in
+    
   fi
   
 done
@@ -178,7 +206,7 @@ do
   IFS=';' tokens=( $line )
   input_file=${tokens[1]}
   day=${tokens[0]}
-  dest_file="$day-WB1-69-24_ParticipantGuide.pdf"
+  dest_file="$day-WB1-609-24_ParticipantGuide.pdf"
   main_header="$day-Header.pdf"
     
   if [ ! -f "$input_file" ]; then
@@ -199,3 +227,12 @@ do
   echo "Merging real file: $input_file"
   merge_pdf $input_file $dest_file
 done
+
+
+echo "Glueing all together"
+merge_pdf Day0-WB1-609-24_ParticipantGuide.pdf WB1-609-24_ParticipantGuide.pdf
+merge_pdf Day1-WB1-609-24_ParticipantGuide.pdf WB1-609-24_ParticipantGuide.pdf
+merge_pdf Day2-WB1-609-24_ParticipantGuide.pdf WB1-609-24_ParticipantGuide.pdf
+merge_pdf Day3-WB1-609-24_ParticipantGuide.pdf WB1-609-24_ParticipantGuide.pdf
+merge_pdf Day4-WB1-609-24_ParticipantGuide.pdf WB1-609-24_ParticipantGuide.pdf
+merge_pdf Day5-WB1-609-24_ParticipantGuide.pdf WB1-609-24_ParticipantGuide.pdf
