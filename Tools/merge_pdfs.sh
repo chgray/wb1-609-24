@@ -15,7 +15,14 @@ function make_header {
   fi
   
   
-  echo "![](./FullSailLogo.png){width=20%}" > ./header.md
+  echo "" > ./header.md
+  echo "---" >> ./header.md
+  echo "header-includes: \pagenumbering{gobble}" >> ./header.md
+  echo "..." >> ./header.md
+
+    
+  
+  echo "![](./FullSailLogo.png){width=20%}" >> ./header.md
   echo "" >> ./header.md
   echo "" >> ./header.md
 
@@ -96,7 +103,7 @@ function merge_pdf {
 # Start
 rm ./*.pdf
 rm ./*.md
-#cp ../Participant_Notebook_Loose/PDFs/FirstPage_Binder_Owner.pdf Day1-WB1-69-24_ParticipantGuide.pdf
+#cp ../Participant_Notebook_Loose/PDFs/FirstPage_Binder_Owner.pdf Day1-WB1-69-24.pdf
 
 #
 #  Build up a header for the section
@@ -106,7 +113,7 @@ do
   IFS=';' tokens=( $line )
   input_file=${tokens[1]}
   day=${tokens[0]}
-  dest_file="$day-WB1-69-24_ParticipantGuide.pdf"
+  dest_file="$day-WB1-69-24.pdf"
   header_name="$day-Header.md"
   
   echo "HeaderName $header_name"
@@ -114,7 +121,14 @@ do
   if [ ! -f "$header_name" ]; then
     echo "Missing File - stopping: $input_file"
     
-    echo "![](./FullSailLogo.png){width=20%}" > $header_name
+    
+    echo ""  >> $header_name
+    echo "---" >> $header_name
+    echo "header-includes: \pagenumbering{gobble}" >> $header_name
+    echo "..." >> $header_name
+
+    
+    echo "![](./FullSailLogo.png){width=20%}" >> $header_name
     echo "" >> $header_name
       
     echo "# **WB1-609-24 Scribe Notes** ($day) Summary" >> $header_name
@@ -205,7 +219,7 @@ do
   IFS=';' tokens=( $line )
   input_file=${tokens[1]}
   day=${tokens[0]}
-  dest_file="$day-WB1-609-24_ParticipantGuide.pdf"
+  dest_file="$day-WB1-609-24.pdf"
   main_header="$day-Header.pdf"
     
   if [ ! -f "$input_file" ]; then
@@ -229,9 +243,16 @@ done
 
 
 echo "Glueing all together"
-merge_pdf Day0-WB1-609-24_ParticipantGuide.pdf WB1-609-24_ParticipantGuide.pdf
-merge_pdf Day1-WB1-609-24_ParticipantGuide.pdf WB1-609-24_ParticipantGuide.pdf
-merge_pdf Day2-WB1-609-24_ParticipantGuide.pdf WB1-609-24_ParticipantGuide.pdf
-merge_pdf Day3-WB1-609-24_ParticipantGuide.pdf WB1-609-24_ParticipantGuide.pdf
-merge_pdf Day4-WB1-609-24_ParticipantGuide.pdf WB1-609-24_ParticipantGuide.pdf
-merge_pdf Day5-WB1-609-24_ParticipantGuide.pdf WB1-609-24_ParticipantGuide.pdf
+
+merge_pdf Day1_PLN-WB1-609-24.pdf WB1-609-24_Participant_Guide.pdf
+merge_pdf Day2_PLN-WB1-609-24.pdf WB1-609-24_Participant_Guide.pdf
+merge_pdf Day3_PLN-WB1-609-24.pdf WB1-609-24_Participant_Guide.pdf
+merge_pdf Day4_PLN-WB1-609-24.pdf WB1-609-24_Participant_Guide.pdf
+merge_pdf Day5_PLN-WB1-609-24.pdf WB1-609-24_Participant_Guide.pdf
+
+merge_pdf Day0-WB1-609-24.pdf WB1-609-24_Participant_Guide.pdf
+merge_pdf Day1-WB1-609-24.pdf WB1-609-24_Participant_Guide.pdf
+merge_pdf Day2-WB1-609-24.pdf WB1-609-24_Participant_Guide.pdf
+merge_pdf Day3-WB1-609-24.pdf WB1-609-24_Participant_Guide.pdf
+merge_pdf Day4-WB1-609-24.pdf WB1-609-24_Participant_Guide.pdf
+merge_pdf Day6-WB1-609-24.pdf WB1-609-24_Participant_Guide.pdf
