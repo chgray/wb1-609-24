@@ -194,8 +194,7 @@ do
     make_header_myDir=$(pwd)
     podman run --rm -v "$make_header_myDir:/data" docker.io/chgray123/pandoc-arm:extra $header_name -o $dest_file -V geometry:margin=0.5in
     
-  fi
-  
+  fi  
 done
 
 
