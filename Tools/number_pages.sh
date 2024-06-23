@@ -20,7 +20,6 @@ function merge_pdf {
     return 0
   fi
   
-  
   echo "Adding $merge_pdf_input_file to $merge_pdf_dest_file"
 
   merge_pdf_me=$(basename "$merge_pdf_input_file")  
@@ -76,7 +75,6 @@ return 0
 # explode the page numbers
 pdftk $input_file burst output file_%03d.pdf
 pdftk pageNumbers.pdf burst output number_%03d.pdf
-
 
 # Combine the files
 time for i in $(seq -f %03g 1 164) ; do pdftk file_$i.pdf background number_$i.pdf output new-$i.pdf ; done

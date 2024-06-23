@@ -2,6 +2,25 @@
 
 #set -e
 
+function make_even {
+  make_even_input_file=$1
+  
+  echo "make_even: $make_even_input_file"
+  
+  count=$(pdftk $make_even_input_file dump_data | grep NumberOfPages | gawk '{print $2}')
+  
+  echo "back"
+  echo $count
+
+  
+  if [[ $(($count % 2)) -eq 0 ]]; then
+    echo "$var is even"; 
+  else echo "$var is odd"; 
+      merge_pdf ../Participant_Notebook_Loose/WB1_609-24_Specific/Day0_Prep/PDFs/BlankNotePage.pdf $make_even_input_file        
+  fi
+
+}
+
 function make_header {
   make_header_day=$1
   make_header_input_file=$2
@@ -64,8 +83,9 @@ function make_header {
     
   make_header_myDir=$(pwd)
   podman run --rm -v "$make_header_myDir:/data" docker.io/chgray123/pandoc-arm:extra ./header.md -o ./Header.pdf -V geometry:margin=0.5in
-  merge_pdf ../Participant_Notebook_Loose/WB1_609-24_Specific/Day0_Prep/PDFs/BlankNotePage.pdf ./Header.pdf
+  # merge_pdf ../Participant_Notebook_Loose/WB1_609-24_Specific/Day0_Prep/PDFs/BlankNotePage.pdf ./Header.pdf
     
+  make_even ./Header.pdf
   rm ./header.md
 }
 
@@ -95,10 +115,10 @@ function merge_pdf {
   echo $?
   mv ./temp.pdf "$merge_pdf_dest_file"  
   
+  make_even $merge_pdf_dest_file
   #exit 1
   echo "DONE"
 }
-
 
 # Start
 rm ./*.pdf
@@ -208,6 +228,7 @@ do
     make_header_myDir=$(pwd)
     podman run --rm -v "$make_header_myDir:/data" docker.io/chgray123/pandoc-arm:extra $header_name -o $dest_file -V geometry:margin=0.5in
     
+    make_even $dest_file
   fi  
 done
 
