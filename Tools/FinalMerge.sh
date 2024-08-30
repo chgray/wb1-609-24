@@ -58,12 +58,12 @@ function make_even {
  ./number_pages.sh ./WB1-609-24_Patrol_Leader.pdf
 
 
-#merge_pdf Day0-WB1-609-24.pdf WB1-609-24_Participant_Guide.pdf
-#merge_pdf Day1-WB1-609-24.pdf WB1-609-24_Participant_Guide.pdf
-#merge_pdf Day2-WB1-609-24.pdf WB1-609-24_Participant_Guide.pdf
-#merge_pdf Day3-WB1-609-24.pdf WB1-609-24_Participant_Guide.pdf
-#merge_pdf Day4-WB1-609-24.pdf WB1-609-24_Participant_Guide.pdf
-#merge_pdf Day5-WB1-609-24.pdf WB1-609-24_Participant_Guide.pdf
-#merge_pdf Day6-WB1-609-24.pdf WB1-609-24_Participant_Guide.pdf
+merge_pdf Day0-WB1-609-24.pdf WB1-609-24_Participant_Guide.pdf
+merge_pdf Day1-WB1-609-24.pdf WB1-609-24_Participant_Guide.pdf
+merge_pdf Day2-WB1-609-24.pdf WB1-609-24_Participant_Guide.pdf
+merge_pdf Day3-WB1-609-24.pdf WB1-609-24_Participant_Guide.pdf
+merge_pdf Day4-WB1-609-24.pdf WB1-609-24_Participant_Guide.pdf
+merge_pdf Day5-WB1-609-24.pdf WB1-609-24_Participant_Guide.pdf
+merge_pdf Day6-WB1-609-24.pdf WB1-609-24_Participant_Guide.pdf
 
-#./number_pages.sh ./WB1-609-24_Participant_Guide.pdf
+./number_pages.sh ./WB1-609-24_Participant_Guide.pdf
