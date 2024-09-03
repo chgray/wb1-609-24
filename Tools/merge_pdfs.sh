@@ -225,10 +225,10 @@ do
     echo "Dest : $dest_file"
 
     make_header_myDir=$(pwd)
-    echo podman run --rm -v "$make_header_myDir:/data" docker.io/chgray123/pandoc-arm:extra $header_name -o $dest_file -V geometry:margin=0.5in
-    podman run --rm -v "$make_header_myDir:/data" docker.io/chgray123/pandoc-arm:extra $header_name -o $dest_file -V geometry:margin=0.5in
+    #echo podman run --rm -v "$make_header_myDir:/data" docker.io/chgray123/pandoc-arm:extra $header_name -o $dest_file -V geometry:margin=0.5in
+    #podman run --rm -v "$make_header_myDir:/data" docker.io/chgray123/pandoc-arm:extra $header_name -o $dest_file -V geometry:margin=0.5in
 
-    make_even $dest_file
+    #make_even $dest_file
   fi
 done
 
@@ -254,11 +254,11 @@ do
   fi
 
   echo "InputFile : $input_file"
-  make_header $day $input_file $dest_file
-  echo "Merging Header"
-  merge_pdf Header.pdf $dest_file
+  #make_header $day $input_file $dest_file
+  #echo "Merging Header"
+  #merge_pdf Header.pdf $dest_file
 
-  echo "Merging real file: $input_file"
+  #echo "Merging real file: $input_file"
   merge_pdf $input_file $dest_file
 done
 

@@ -49,7 +49,9 @@ function make_even {
   fi
 }
 
-
+ rm ./WB1-609-24_Patrol_Leader.pdf
+ rm ./WB1-609-24_Participant_Guide.pdf
+ 
  merge_pdf Day1_PLN-WB1-609-24.pdf WB1-609-24_Patrol_Leader.pdf
  merge_pdf Day2_PLN-WB1-609-24.pdf WB1-609-24_Patrol_Leader.pdf
  merge_pdf Day3_PLN-WB1-609-24.pdf WB1-609-24_Patrol_Leader.pdf
