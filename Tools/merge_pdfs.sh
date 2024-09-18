@@ -16,10 +16,11 @@ function make_even {
   if [[ $(($count % 2)) -eq 0 ]]; then
     echo "$var is even";
   else echo "$var is odd";
-      merge_pdf ../Participant_Notebook_Loose/WB1_609-24_Specific/Day0_Prep/PDFs/BlankNotePage.pdf $make_even_input_file
+      merge_pdf ../Participant_Notebook_Loose/WB1_609-24_Specific/Day0_Prep/PDFs/BlankNotePage.pdf $make_even_input_file 0
   fi
 
-  # page_count = $count
+  echo "Count $count" >> doh.blah
+  page_count=$count
 }
 
 function make_header {
@@ -52,8 +53,10 @@ function make_header {
 
   make_header_myDir=$(pwd)
   podman run --rm -v "$make_header_myDir:/data" docker.io/chgray123/pandoc-arm:extra ./header.md -o ./Header.pdf -V geometry:margin=0.5in
-  merge_pdf ../Participant_Notebook_Loose/WB1_609-24_Specific/Day0_Prep/PDFs/BlankNotePage.pdf ./Header.pdf
 
+  merge_pdf ../Participant_Notebook_Loose/WB1_609-24_Specific/Day0_Prep/PDFs/BlankNotePage.pdf ./Header.pdf 0
+
+  local page_count = 90
   make_even ./Header.pdf
   rm ./header.md
 }
@@ -62,6 +65,7 @@ function make_header {
 function merge_pdf {
   merge_pdf_input_file=$1
   merge_pdf_dest_file=$2
+  print_len=$3
 
   if [ ! -f "$merge_pdf_input_file" ]; then
     echo "Missing File - stopping: $merge_pdf_input_file"
@@ -84,13 +88,18 @@ function merge_pdf {
   echo $?
   mv ./temp.pdf "$merge_pdf_dest_file"
 
-  # local page_count = 80
+  local page_count=80
   make_even $merge_pdf_dest_file
 
-  echo "$merge_pdf_input_file ==> $page_count" >> x.len
+  if [ $print_len -eq 1 ]; then
+    echo "$merge_pdf_input_file ==> $page_count" >> x.len
+  fi
   #exit 1
   echo "DONE"
 }
+
+
+
 
 # Start
 rm ./*.pdf
@@ -191,7 +200,7 @@ do
   #merge_pdf Header.pdf $dest_file
 
   #echo "Merging real file: $input_file"
-  merge_pdf $input_file $dest_file
+  merge_pdf $input_file $dest_file 1
 done
 
 

@@ -31,12 +31,10 @@ Day4_PLN;../Wood Badge 2020 Final (2023 Update)/WB 2020 Daily Session Folders fo
 Day5_PLN;../Wood Badge 2020 Final (2023 Update)/WB 2020 Daily Session Folders for CDs/WB 2020 5 DAY FIVE/5-01 Breakfast Assessment/D5_01_01_PLN_Day 5 SSC_080120.PDF
 Day5_PLN;../Wood Badge 2020 Final (2023 Update)/WB 2020 Daily Session Folders for CDs/WB 2020 5 DAY FIVE/5-04 Patrol Leaders_ Council/D5_04_01_PLN_Day 5 PLC Agenda_080120.PDF
 Day0;../Participant_Notebook_Loose/WB1_609-24_Specific/Day0_Prep/PDFs/BINDER_FrontCover.pdf
-Day0;../Participant_Notebook_Loose/WB1_609-24_Specific/Day0_Prep/PDFs/BINDER_FrontCover.pdf
 Day0;../Participant_Notebook_Loose/WB1_609-24_Specific/Day0_Prep/PDFs/FirstPage_Binder_Owner.pdf
-Day0;../Participant_Notebook_Loose/WB1_609-24_Specific/Day0_Prep/PDFs/MapOfPigott.pdf
 Day0;../Participant_Notebook_Loose/WB1_609-24_Specific/Day0_Prep/PDFs/EmergencyAndSafetyInfo.pdf
+Day0;../Participant_Notebook_Loose/WB1_609-24_Specific/Day0_Prep/PDFs/MapOfPigott.pdf
 Day0;../Participant_Notebook_Loose/WB1_609-24_Specific/Day0_Prep/PDFs/PatrolRoster.pdf
-Day0;../Participant_Notebook_Loose/WB1_609-24_Specific/Day0_Prep/PDFs/Staff.pdf
 Day1;../Wood Badge 2020 Final (2023 Update)/WB 2020 Daily Session Folders for CDs/WB 2020 1 DAY ONE/1-03 Course Overview/D1_03_01_PN_Session Summary_080120.PDF
 Day1;../Wood Badge 2020 Final (2023 Update)/WB 2020 Daily Session Folders for CDs/WB 2020 1 DAY ONE/1-04 Drive Vision, Mission, and Values/D1_04_01_PN_Session Summary_080120.PDF
 Day1;../Wood Badge 2020 Final (2023 Update)/WB 2020 Daily Session Folders for CDs/WB 2020 1 DAY ONE/1-05 Know Thyself/D1_05_03_PN_Session Summary_080120.PDF
